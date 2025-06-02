@@ -129,7 +129,7 @@ export default defineComponent({
 
         return
       }
-
+      const song = `${enteredKunstler.value}-${enteredTitel.value}`
       try {
         await fetch('https://music-list-cadfa-default-rtdb.firebaseio.com/songs.json', {
           method: 'POST',
@@ -137,8 +137,7 @@ export default defineComponent({
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            enteredKunstler: enteredKunstler.value,
-            enteredTitel: enteredTitel.value,
+            song,
           }),
         })
 
