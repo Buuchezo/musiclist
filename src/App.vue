@@ -124,7 +124,7 @@ export default defineComponent({
         successMessage.value = t.value.success
         enteredKunstler.value = ''
         enteredTitel.value = ''
-      } catch (error) {
+      } catch {
         errorMessage.value =
           lang.value === 'de' ? 'Fehler beim Speichern.' : 'An error occurred while saving.'
       }
