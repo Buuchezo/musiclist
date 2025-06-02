@@ -36,7 +36,7 @@
       <input type="text" :placeholder="t.titlePlaceholder" v-model="enteredTitel" />
 
       <transition name="fade" mode="out-in">
-        <button :key="t.lang + '-button'">{{ t.button }}</button>
+        <button :key="t.lang + '-button'" class="btn">{{ t.button }}</button>
       </transition>
     </form>
 
@@ -201,6 +201,7 @@ body {
 
 .lang-switcher button {
   background: none !important;
+  background-color: none !important;
   border: none;
   font-size: 2rem;
   cursor: pointer;
@@ -246,7 +247,7 @@ input {
   font-size: 1rem;
 }
 
-button {
+.btn {
   border: none;
   background-color: #006400 !important; /* lime green */
   color: white !important;
@@ -258,7 +259,7 @@ button {
   margin-top: 1rem;
 }
 
-button:hover {
+.btn:hover {
   background-color: #3ee28c !important; /* minty green */
 }
 
