@@ -47,11 +47,19 @@
     <transition name="fade">
       <p v-if="successMessage" class="success">✅ {{ successMessage }}</p>
     </transition>
+    <transition name="fade">
+      <div v-if="!cookieAccepted" class="cookie-banner">
+        <p>
+          {{ t.cookieMessage }}
+        </p>
+        <button @click="acceptCookies">{{ t.cookieButton }}</button>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script>
-import { defineComponent, ref, computed } from 'vue'
+import { defineComponent, ref, computed, onMounted } from 'vue'
 
 export default defineComponent({
   setup() {
@@ -61,6 +69,7 @@ export default defineComponent({
     const successMessage = ref('')
     const lang = ref('de')
     const errorTimer = ref(null)
+    const cookieAccepted = ref(false)
 
     const translations = {
       de: {
@@ -74,6 +83,8 @@ export default defineComponent({
         button: 'Speichern',
         error: 'Bitte fülle beide Felder aus.',
         success: 'Dein Wunsch wurde erfolgreich gespeichert! 🎶',
+        cookieMessage: 'Wir speichern keine persönlichen Daten – nur deinen Musikwunsch 💚',
+        cookieButton: 'Verstanden!',
       },
       en: {
         lang: 'en',
@@ -86,6 +97,8 @@ export default defineComponent({
         button: 'Save',
         error: 'Please fill in both fields.',
         success: 'Your wish was successfully saved! 🎶',
+        cookieMessage: 'We don’t store personal data – just your music wish 💚',
+        cookieButton: 'Got it!',
       },
     }
 
@@ -142,6 +155,17 @@ export default defineComponent({
           lang.value === 'de' ? 'Fehler beim Speichern.' : 'An error occurred while saving.'
       }
     }
+    const acceptCookies = () => {
+      cookieAccepted.value = true
+      localStorage.setItem('cookieAccepted', 'true')
+    }
+
+    // Check on load
+    onMounted(() => {
+      if (localStorage.getItem('cookieAccepted') === 'true') {
+        cookieAccepted.value = true
+      }
+    })
 
     return {
       enteredKunstler,
@@ -151,6 +175,7 @@ export default defineComponent({
       t,
       submitPoem,
       setLanguage,
+      acceptCookies,
     }
   },
 })
@@ -283,5 +308,35 @@ input {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(34, 139, 34, 0.95); /* forest green semi-transparent */
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.95rem;
+  z-index: 999;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cookie-banner button {
+  margin-left: 1rem;
+  background: white;
+  color: green;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.cookie-banner button:hover {
+  background: #f0fff0;
 }
 </style>
