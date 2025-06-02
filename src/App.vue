@@ -67,7 +67,7 @@ export default defineComponent({
         lang: 'de',
         title: 'Music Wünsche',
         message: 'Teile deinen Musikwunsch für unseren besonderen Tag 💕',
-        artistLabel: 'Künstler',
+        artistLabel: 'Künstler/in',
         artistPlaceholder: 'Künstler name ...',
         titleLabel: 'Titel',
         titlePlaceholder: 'Musiktitel ...',
