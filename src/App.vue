@@ -60,6 +60,7 @@ export default defineComponent({
     const errorMessage = ref('')
     const successMessage = ref('')
     const lang = ref('de')
+    const errorTimer = ref(null)
 
     const translations = {
       de: {
@@ -104,9 +105,13 @@ export default defineComponent({
       if (!enteredKunstler.value.trim() || !enteredTitel.value.trim()) {
         errorMessage.value = t.value.error
 
-        // Automatically clear the error after 4 seconds
-        setTimeout(() => {
+        // Clear any previous timeouts if needed
+        if (errorTimer.value) clearTimeout(errorTimer.value)
+
+        // Set a new timeout to clear the message
+        errorTimer.value = setTimeout(() => {
           errorMessage.value = ''
+          errorTimer.value = null
         }, 4000)
 
         return
@@ -123,9 +128,15 @@ export default defineComponent({
             enteredTitel: enteredTitel.value,
           }),
         })
+
         successMessage.value = t.value.success
         enteredKunstler.value = ''
         enteredTitel.value = ''
+
+        // Clear success message after 4 seconds
+        setTimeout(() => {
+          successMessage.value = ''
+        }, 4000)
       } catch {
         errorMessage.value =
           lang.value === 'de' ? 'Fehler beim Speichern.' : 'An error occurred while saving.'
