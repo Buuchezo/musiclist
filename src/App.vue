@@ -12,7 +12,10 @@
 
     <!-- Smooth fade transition -->
     <transition name="fade" mode="out-in">
-      <h2 :key="t.lang">{{ t.title }} 🎵🎶💍💒</h2>
+      <h2 :key="t.lang">
+        {{ t.title }}<br />
+        💍💒
+      </h2>
     </transition>
 
     <transition name="fade" mode="out-in">
