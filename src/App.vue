@@ -129,7 +129,7 @@ export default defineComponent({
 
         return
       }
-      const song = `${enteredKunstler.value}-${enteredTitel.value}`
+      const song = `${enteredKunstler.value} - ${enteredTitel.value}`
       try {
         await fetch('https://music-list-cadfa-default-rtdb.firebaseio.com/songs.json', {
           method: 'POST',
