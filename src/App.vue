@@ -103,6 +103,12 @@ export default defineComponent({
 
       if (!enteredKunstler.value.trim() || !enteredTitel.value.trim()) {
         errorMessage.value = t.value.error
+
+        // Automatically clear the error after 4 seconds
+        setTimeout(() => {
+          errorMessage.value = ''
+        }, 4000)
+
         return
       }
 
