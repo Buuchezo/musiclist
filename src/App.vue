@@ -176,6 +176,7 @@ export default defineComponent({
       submitPoem,
       setLanguage,
       acceptCookies,
+      cookieAccepted,
     }
   },
 })
