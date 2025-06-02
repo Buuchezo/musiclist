@@ -9,13 +9,6 @@
         <img src="https://flagcdn.com/32x24/gb.png" alt="English" />
       </button>
     </div>
-    <div class="floating-heart">❤️</div>
-    <div class="floating-heart">💖</div>
-    <div class="floating-heart">💖</div>
-    <div class="floating-heart">💖</div>
-    <div class="floating-heart">💖</div>
-    <div class="floating-heart">💘</div>
-    <div class="floating-heart">💕</div>
 
     <!-- Smooth fade transition -->
     <transition name="fade" mode="out-in">
