@@ -286,50 +286,6 @@ body {
   transition: background-color 100s ease;
 }
 
-@keyframes floatHearts {
-  0% {
-    transform: translateY(0) scale(0.8);
-    opacity: 0.8;
-  }
-  50% {
-    transform: translateY(-150px) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-300px) scale(0.8);
-    opacity: 0;
-  }
-}
-
-.floating-heart {
-  position: absolute;
-  top: 100%;
-  animation: floatHearts 6s ease-in-out infinite;
-  font-size: 3rem;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.floating-heart:nth-child(1) {
-  left: 20%;
-  animation-delay: 0s;
-}
-
-.floating-heart:nth-child(2) {
-  left: 40%;
-  animation-delay: 1s;
-}
-
-.floating-heart:nth-child(3) {
-  left: 60%;
-  animation-delay: 2s;
-}
-
-.floating-heart:nth-child(4) {
-  left: 80%;
-  animation-delay: 3s;
-}
-
 /* .lang-switcher .active {
   filter: drop-shadow(0 0 4px #ff69b4);
 } */
